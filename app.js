@@ -14,8 +14,16 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 app.use(express.urlencoded({ extended: true }));
+
+// Database connection
 connectDB();
 
+// ✅ Root Route Added
+app.get("/", (req, res) => {
+  res.send("Server is running!");
+});
+
+// Routes
 app.use("/api/admin", adminUserRoutes);
 app.use("/api/admin", adminRoutes);
 app.use("/api/activity", activityRoutes);
